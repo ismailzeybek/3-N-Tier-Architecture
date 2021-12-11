@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -23,9 +24,10 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult AddNewProducttoDb(Product product)
         {
-            ValidationTool.Validate(new ProductValidator(), product);
+            
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
