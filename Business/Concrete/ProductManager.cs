@@ -35,7 +35,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             //iş kodları yetkisi var mı yok mu? 
-            if (DateTime.Now.Hour==13)
+            if (DateTime.Now.Hour==15)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
